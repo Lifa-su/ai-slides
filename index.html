@@ -184,6 +184,38 @@ border-radius:8px;color:var(--text);outline:none;transition:border-color .2s}
 /* Tooltip */
 [data-tip]{position:relative}
 [data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:4px 10px;border-radius:6px;font-size:.75rem;white-space:nowrap;z-index:99}
+/* Pro Templates */
+.pro-section{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+.pro-section-title{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--text2);margin-bottom:12px;font-weight:600}
+.pro-badge{background:linear-gradient(135deg,#f39c12,#e74c3c);color:#fff;font-size:.65rem;padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.5px}
+.pro-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.pro-card{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;border:2px solid var(--border);transition:all .2s}
+.pro-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.pro-card-preview{height:100px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pro-card-preview.cinematic{background:linear-gradient(135deg,#0a0a0f,#1a1a2e,#16213e)}
+.pro-card-preview.cinematic::after{content:'Product Launch';color:rgba(255,255,255,.3);font-size:1.1rem;font-weight:700;letter-spacing:2px}
+.pro-card-preview.executive{background:linear-gradient(135deg,#fafafa,#f0f0f0,#e8e8e8)}
+.pro-card-preview.executive::after{content:'Q4 Report';color:rgba(0,0,0,.15);font-size:1.1rem;font-weight:300;letter-spacing:3px}
+.pro-card-preview.gradient{background:linear-gradient(135deg,#667eea,#764ba2,#f093fb)}
+.pro-card-preview.gradient::after{content:'Brand Story';color:rgba(255,255,255,.3);font-size:1.1rem;font-weight:600}
+.pro-card-overlay{position:absolute;inset:0;backdrop-filter:blur(3px);background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center}
+.pro-card-lock{font-size:1.5rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+.pro-card-info{padding:10px;background:var(--surface2)}
+.pro-card-info .name{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.pro-card-info .desc{font-size:.7rem;color:var(--text2);line-height:1.3}
+.upgrade-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity .2s}
+.upgrade-modal-bg.active{opacity:1;pointer-events:auto}
+.upgrade-modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;max-width:420px;width:90%;text-align:center;transform:scale(.9);transition:transform .2s}
+.upgrade-modal-bg.active .upgrade-modal{transform:scale(1)}
+.upgrade-modal h2{font-size:1.4rem;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.upgrade-modal .subtitle{color:var(--text2);font-size:.9rem;margin-bottom:20px}
+.upgrade-modal .features{text-align:left;margin-bottom:24px;padding:0}
+.upgrade-modal .features li{padding:6px 0;font-size:.85rem;color:var(--text);list-style:none;display:flex;align-items:center;gap:8px}
+.upgrade-modal .features li::before{content:'✓';color:var(--success);font-weight:700}
+.upgrade-btn{display:block;width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:1.05rem;font-weight:700;border-radius:10px;text-decoration:none;transition:opacity .2s;border:none;cursor:pointer;text-align:center}
+.upgrade-btn:hover{opacity:.9}
+.maybe-later{background:none;border:none;color:var(--text2);font-size:.85rem;margin-top:12px;cursor:pointer;padding:8px}
+.maybe-later:hover{color:var(--text)}
 </style>
 </head>
 <body>
@@ -258,6 +290,39 @@ border-radius:8px;color:var(--text);outline:none;transition:border-color .2s}
           <button class="btn btn-sm btn-outline" onclick="addSlide()" data-tip="添加幻灯片">＋</button>
         </div>
         <div id="slideListItems"></div>
+      </div>
+      <!-- Pro Templates -->
+      <div class="pro-section">
+        <div class="pro-section-title">🔥 Premium Styles <span class="pro-badge">PRO</span></div>
+        <div class="pro-grid">
+          <div class="pro-card" onclick="showUpgradeModal()">
+            <div class="pro-card-preview cinematic">
+              <div class="pro-card-overlay"><span class="pro-card-lock">🔒</span></div>
+            </div>
+            <div class="pro-card-info">
+              <div class="name">🎨 Cinematic Dark</div>
+              <div class="desc">电影级暗色主题，适合产品发布和科技演讲</div>
+            </div>
+          </div>
+          <div class="pro-card" onclick="showUpgradeModal()">
+            <div class="pro-card-preview executive">
+              <div class="pro-card-overlay"><span class="pro-card-lock">🔒</span></div>
+            </div>
+            <div class="pro-card-info">
+              <div class="name">💎 Executive Minimal</div>
+              <div class="desc">极简高管风格，适合董事会和投资人演示</div>
+            </div>
+          </div>
+          <div class="pro-card" onclick="showUpgradeModal()">
+            <div class="pro-card-preview gradient">
+              <div class="pro-card-overlay"><span class="pro-card-lock">🔒</span></div>
+            </div>
+            <div class="pro-card-info">
+              <div class="name">🌈 Creative Gradient</div>
+              <div class="desc">创意渐变风格，适合品牌展示和营销演示</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </aside>
@@ -933,6 +998,27 @@ function exportAllMarkdown() {
   a.click();
   URL.revokeObjectURL(url);
 }
+</script>
+<!-- Pro Upgrade Modal -->
+<div class="upgrade-modal-bg" id="upgradeModal">
+  <div class="upgrade-modal">
+    <h2>✨ Unlock Pro Styles</h2>
+    <p class="subtitle">3 premium presentation themes for professionals</p>
+    <ul class="features">
+      <li>Cinematic Dark — 电影级暗色主题</li>
+      <li>Executive Minimal — 极简高管风格</li>
+      <li>Creative Gradient — 创意渐变风格</li>
+      <li>Lifetime access, no subscription</li>
+      <li>Future style updates included</li>
+    </ul>
+    <a href="https://feifeicch.gumroad.com/ai-presentation" target="_blank" class="upgrade-btn">Upgrade to Pro — $14</a>
+    <button class="maybe-later" onclick="hideUpgradeModal()">Maybe later</button>
+  </div>
+</div>
+<script>
+function showUpgradeModal(){document.getElementById('upgradeModal').classList.add('active')}
+function hideUpgradeModal(){document.getElementById('upgradeModal').classList.remove('active')}
+document.getElementById('upgradeModal').addEventListener('click',function(e){if(e.target===this)hideUpgradeModal()});
 </script>
 <!-- MONETIZE:START -->
 <script src="monetize.js"></script>
